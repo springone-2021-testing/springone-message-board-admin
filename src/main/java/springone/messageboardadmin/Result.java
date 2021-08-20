@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdminApiResponse {
+public class Result {
     private String message;
     private String type;
     private String parameter;
