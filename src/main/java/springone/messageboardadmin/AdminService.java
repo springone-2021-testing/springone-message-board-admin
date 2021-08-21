@@ -19,7 +19,7 @@ public class AdminService {
         this.restTemplate = restTemplate;
     }
 
-    Result deleteMessage(String username) {
+    Result deleteMessageByUsername(String username) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
