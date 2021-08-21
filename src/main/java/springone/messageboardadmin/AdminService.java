@@ -19,14 +19,14 @@ public class AdminService {
         this.restTemplate = restTemplate;
     }
 
-    Result deleteMessage(String username) {
+    Result deleteMessageByUsername(String username) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         HttpEntity<String> request = new HttpEntity<String>(headers);
 
         ResponseEntity<Result> response = this.restTemplate.exchange(
-                baseUrl + "/message/{username}",
+                baseUrl + "/message?username={username}",
                 HttpMethod.DELETE,
                 request,
                 Result.class,
