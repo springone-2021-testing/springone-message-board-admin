@@ -26,7 +26,7 @@ public class AdminServiceContractTests {
     }
 
     @Test
-    void shouldDeleteMessageByName() {
+    void shouldDeleteMessageByUsername() {
         Result result = this.service.deleteMessage("Cora");
         Assertions.assertTrue(result.getMessage().equals("Success"), "the result should have the correct message");
         Assertions.assertTrue(result.getType().equals("Delete"), "the result should have the correct type");

@@ -28,7 +28,7 @@ class AdminServiceTests {
 	}
 
 	@Test
-	void shouldDeleteMessageByName() {
+	void shouldDeleteMessageByUsername() {
 
 		var body = "{\"message\":\"Success\",\"type\":\"Delete\",\"parameter\":\"1\"}";
 		stubFor(delete(urlEqualTo("/message/Cora"))
