@@ -9,10 +9,6 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class MessageBoardAdminApplication {
 
-//	@Bean
-//	RestTemplate restTemplate() {
-//		return new RestTemplate();
-//	}
 	@Bean
 	RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
 		return restTemplateBuilder.build();

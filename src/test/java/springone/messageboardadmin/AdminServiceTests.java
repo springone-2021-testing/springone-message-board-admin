@@ -14,7 +14,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWireMock(port = 0)
-class MessageBoardAdminApplicationTests {
+class AdminServiceTests {
 
 	@Autowired
 	private Environment environment;
@@ -28,7 +28,7 @@ class MessageBoardAdminApplicationTests {
 	}
 
 	@Test
-	void contextLoads() {
+	void shouldDeleteMessageByName() {
 
 		var body = "{\"message\":\"Success\",\"type\":\"Delete\",\"parameter\":\"1\"}";
 		stubFor(delete(urlEqualTo("/message/Cora"))
