@@ -9,7 +9,7 @@ import org.springframework.cloud.contract.stubrunner.StubFinder;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
 import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties;
 
-@AutoConfigureStubRunner(ids = "springone:message-board-admin-contracts",
+@AutoConfigureStubRunner(ids = "springone:message-board-contracts:1.0.0",
         stubsMode = StubRunnerProperties.StubsMode.LOCAL)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.NONE)
 public class AdminServiceContractTests {
@@ -22,7 +22,7 @@ public class AdminServiceContractTests {
 
     @BeforeEach
     public void setup() {
-        this.service.setBaseUrl("http://localhost:" + stubFinder.findStubUrl("message-board-admin-contracts").getPort());
+        this.service.setBaseUrl("http://localhost:" + stubFinder.findStubUrl("message-board-contracts").getPort());
     }
 
     @Test
