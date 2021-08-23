@@ -32,10 +32,10 @@ class AdminServiceTests {
 
         var body = "{\"message\":\"Success\",\"type\":\"Delete\",\"parameter\":\"1\"}";
         stubFor(delete(urlEqualTo("/message?username=Cora"))
-                .willReturn(aResponse()
-                        .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                        .withBody(body)
-                )
+            .willReturn(aResponse()
+                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .withBody(body)
+            )
         );
 
         Result result = this.service.deleteMessageByUsername("Cora");
