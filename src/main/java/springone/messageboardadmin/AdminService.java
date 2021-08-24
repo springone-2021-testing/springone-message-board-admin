@@ -36,4 +36,19 @@ public class AdminService {
 
     }
 
+    public Result deleteMessageByKeyword(String keyword) {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+        HttpEntity<String> request = new HttpEntity<String>(headers);
+
+        ResponseEntity<Result> response = this.restTemplate.exchange(
+                baseUrl + "/message?keyword={keyword}",
+                HttpMethod.DELETE,
+                request,
+                Result.class,
+                keyword
+        );
+        return response.getBody();
+    }
 }
