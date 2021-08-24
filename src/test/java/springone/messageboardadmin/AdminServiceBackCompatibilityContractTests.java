@@ -9,10 +9,10 @@ import org.springframework.cloud.contract.stubrunner.StubFinder;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
 import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties;
 
-@AutoConfigureStubRunner(ids = "springone:message-board-contracts:2.0.0",
+@AutoConfigureStubRunner(ids = "springone:message-board-contracts:1.0.0",
         stubsMode = StubRunnerProperties.StubsMode.LOCAL)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.NONE)
-public class AdminServiceContractTests {
+public class AdminServiceBackCompatibilityContractTests {
 
     @Autowired
     private AdminService service;
@@ -28,9 +28,9 @@ public class AdminServiceContractTests {
     @Test
     void shouldDeleteMessageByUsername() {
         Result result = this.service.deleteMessageByUsername("Cora");
-        BDDAssertions.then(result.getMessage()).isEqualTo("Success");
+        BDDAssertions.then(result.getMessage()).isEqualTo("Failure");
         BDDAssertions.then(result.getType()).isEqualTo("Delete");
-        BDDAssertions.then(result.getParameter()).isEqualTo("1");
+        BDDAssertions.then(result.getParameter()).isEqualTo("-1");
     }
 
 }
