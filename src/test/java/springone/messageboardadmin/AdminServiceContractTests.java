@@ -1,6 +1,6 @@
 package springone.messageboardadmin;
 
-import org.assertj.core.api.BDDAssertions;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +28,17 @@ public class AdminServiceContractTests {
     @Test
     void shouldDeleteMessageByUsername() {
         Result result = this.service.deleteMessageByUsername("Cora");
-        BDDAssertions.then(result.getMessage()).isEqualTo("Success");
-        BDDAssertions.then(result.getType()).isEqualTo("Delete");
-        BDDAssertions.then(result.getParameter()).isEqualTo("1");
+        Assertions.assertTrue(result.getMessage().equals("Success"), "the result should have the correct message");
+        Assertions.assertTrue(result.getType().equals("Delete"), "the result should have the correct type");
+        Assertions.assertTrue(result.getParameter().equals("1"), "the result should have the correct parameter");
+    }
+
+    @Test
+    void shouldDeleteMessageByKeyword() {
+        Result result = this.service.deleteMessageByKeyword("selling");
+        Assertions.assertTrue(result.getMessage().equals("Success"), "the result should have the correct message");
+        Assertions.assertTrue(result.getType().equals("Delete"), "the result should have the correct type");
+        Assertions.assertTrue(result.getParameter().equals("1"), "the result should have the correct parameter");
     }
 
 }

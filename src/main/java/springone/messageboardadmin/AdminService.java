@@ -3,10 +3,7 @@ package springone.messageboardadmin;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -46,4 +43,19 @@ public class AdminService {
 
     }
 
+    public Result deleteMessageByKeyword(String keyword) {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+        HttpEntity<String> request = new HttpEntity<String>(headers);
+
+        ResponseEntity<Result> response = this.restTemplate.exchange(
+                baseUrl + "/message?keyword={keyword}",
+                HttpMethod.DELETE,
+                request,
+                Result.class,
+                keyword
+        );
+        return response.getBody();
+    }
 }
