@@ -9,7 +9,7 @@ import org.springframework.cloud.contract.stubrunner.StubFinder;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
 import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties;
 
-@AutoConfigureStubRunner(ids = "springone:message-board-contracts:2.0.0-PROPOSAL",
+@AutoConfigureStubRunner(ids = "springone:message-board-contracts:2.0.0",
         stubsMode = StubRunnerProperties.StubsMode.LOCAL)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.NONE)
 public class AdminServiceContractTests {
