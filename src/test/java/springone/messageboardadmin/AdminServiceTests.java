@@ -31,14 +31,14 @@ class AdminServiceTests {
 	void shouldDeleteMessageByUsername() {
 
 		var body = "{\"message\":\"Success\",\"type\":\"Delete\",\"parameter\":\"1\"}";
-		stubFor(delete(urlEqualTo("/message/Cora"))
+		stubFor(delete(urlEqualTo("/message/Cora_Iberkleid"))
 			.willReturn(aResponse()
 			.withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
 			.withBody(body)
 			)
 		);
 
-		Result result = this.service.deleteMessageByUsername("Cora");
+		Result result = this.service.deleteMessageByUsername("Cora_Iberkleid");
 		Assertions.assertTrue(result.getMessage().equals("Success"), "the result should have the correct message");
 		Assertions.assertTrue(result.getType().equals("Delete"), "the result should have the correct type");
 		Assertions.assertTrue(result.getParameter().equals("1"), "the result should have the correct parameter");

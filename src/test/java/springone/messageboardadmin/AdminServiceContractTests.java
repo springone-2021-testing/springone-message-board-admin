@@ -9,8 +9,8 @@ import org.springframework.cloud.contract.stubrunner.StubFinder;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
 import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties;
 
-@AutoConfigureStubRunner(ids = "springone:message-board-contracts:1.0.0",
-        stubsMode = StubRunnerProperties.StubsMode.LOCAL)
+@AutoConfigureStubRunner(stubsMode = StubRunnerProperties.StubsMode.LOCAL,
+        ids = "springone:message-board-contracts:1.0.0")
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.NONE)
 public class AdminServiceContractTests {
 
@@ -27,7 +27,7 @@ public class AdminServiceContractTests {
 
     @Test
     void shouldDeleteMessageByUsername() {
-        Result result = this.service.deleteMessageByUsername("Cora");
+        Result result = this.service.deleteMessageByUsername("Cora_Iberkleid");
         Assertions.assertTrue(result.getMessage().equals("Success"), "the result should have the correct message");
         Assertions.assertTrue(result.getType().equals("Delete"), "the result should have the correct type");
         Assertions.assertTrue(result.getParameter().equals("1"), "the result should have the correct parameter");
@@ -35,7 +35,7 @@ public class AdminServiceContractTests {
 
     @Test
     void shouldFailDeleteMessageByUsername() {
-        Result result = this.service.deleteMessageByUsername("anamethatdoesnotexist");
+        Result result = this.service.deleteMessageByUsername("anamethat_doesnotexist");
         Assertions.assertTrue(result.getMessage().equals("Failure"), "the result should have the correct message");
         Assertions.assertTrue(result.getType().equals("Delete"), "the result should have the correct type");
         Assertions.assertTrue(result.getParameter().equals("-1"), "the result should have the correct parameter");
